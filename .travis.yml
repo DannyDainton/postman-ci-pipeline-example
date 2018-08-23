@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "8.2.1"
+
+install:
+  - npm install newman
+
+before_script:
+  - node --version
+  - npm --version
+  - node_modules/.bin/newman --version
+
+script:
+  - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json
