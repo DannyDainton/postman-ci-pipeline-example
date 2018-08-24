@@ -385,14 +385,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "43ad80e3-d20c-4f99-b035-29381323516e",
+								"id": "6c895279-c3c4-4366-bf00-b6a24803bb45",
 								"type": "text/javascript",
 								"exec": [
-									"console.log(data.my_other_value)",
-									"",
-									"if (data.my_other_value === null ) {",
-									"    postman.setNextRequest(null)",
-									"}"
+									""
 								]
 							}
 						}
@@ -410,13 +406,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/booking/{{my_value}}",
+							"raw": "{{baseURL}}/booking/1",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"booking",
-								"{{my_value}}"
+								"1"
 							]
 						}
 					},
@@ -476,14 +472,12 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7f1529fa-a58b-4d9b-a8b1-651483fa26e8",
+								"id": "54b4b504-e764-4748-b1b1-24aec8a507a5",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200))",
-									"    ",
 									"",
-									"",
-									""
+									"pm.environment.unset('booking_id')"
 								]
 							}
 						}

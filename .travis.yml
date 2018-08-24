@@ -11,4 +11,4 @@ before_script:
   - node_modules/.bin/newman --version
 
 script:
-  - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json
+  - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json --color --disable-unicode
