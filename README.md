@@ -18,7 +18,7 @@ All the magic happens in the `.travis.yml` file. This is building out the node e
 
 Once the node environment has been created, the `script` section is run - This would be run in the same way that you would run `Newman` from the command line on your local machine.
 
-You can specifiy a number of different command line args to the script that would change the way that `Newman` runs the command. More details can be found [here](https://github.com/postmanlabs/newman#command-line-options). 
+You can specifiy a number of different command line args to the script that would change the way that `Newman` runs the command. I've added the `--color` and `--disable-unicode` flags as an example of the args that can be used. More details about the other command line args can be found [here](https://github.com/postmanlabs/newman#command-line-options). 
 
 ```yml
 language: node_js
@@ -34,7 +34,7 @@ before_script:
   - node_modules/.bin/newman --version
 
 script:
-  - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json
+  - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json --color auto --disable-unicode
 ```
 
 ---
