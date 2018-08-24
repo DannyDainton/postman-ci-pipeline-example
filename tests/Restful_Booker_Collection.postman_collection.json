@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "46c2e586-8b48-418b-89dd-58f833e202e0",
+		"_postman_id": "e1e36c17-9661-47a9-ba36-aa74988282f4",
 		"name": "Restful_Booker_Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c0f143c4-459c-4e5b-b22e-d5076be8d539",
+								"id": "9a52cee5-7399-49d7-b6e3-056779178c07",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Status code is 201\", () => pm.response.to.have.status(201))",
@@ -54,6 +54,29 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fbbd986f-ad1d-4f4e-b402-18100283fd7e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f5148e7-8c33-4074-a600-8831157c40f0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", () => pm.response.to.have.status(201))",
+							""
+						]
+					}
 				}
 			]
 		},
@@ -350,11 +373,26 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "a2bc2659-9bfc-452d-9ee5-9783f27c6c49",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200))",
 									"",
 									"pm.test('Content-Type header is correct', () => pm.response.to.have.header('Content-Type', 'application/json; charset=utf-8'))"
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "43ad80e3-d20c-4f99-b035-29381323516e",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(data.my_other_value)",
+									"",
+									"if (data.my_other_value === null ) {",
+									"    postman.setNextRequest(null)",
+									"}"
 								]
 							}
 						}
@@ -372,13 +410,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/booking/1",
+							"raw": "{{baseURL}}/booking/{{my_value}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"booking",
-								"1"
+								"{{my_value}}"
 							]
 						}
 					},
@@ -428,14 +466,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "af43d03a-e74f-4454-8b79-81006f5b4e7b",
+								"id": "e8cda791-42de-4b88-8b15-669fea4204a1",
 								"type": "text/javascript",
 								"exec": [
-									"var mail = pm.environment.get(\"booking_id\")",
-									"",
-									"pm.environment.set(\"booking_id\", Number(mail) + 1)",
-									"",
-									""
+									"pm.environment.set(\"booking_id\", Math.floor((Math.random() * 10) + 1))"
 								]
 							}
 						},
@@ -525,7 +559,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "eeb0b51e-2c47-4271-8399-7fd1cd934d72",
+								"id": "5c5cbd2d-710e-4056-88c2-20225f973bf9",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -535,7 +569,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "748f8788-42bc-4765-a013-0795b357b67b",
+								"id": "858da7f1-a936-4fa4-9eac-7e79f09586c3",
 								"type": "text/javascript",
 								"exec": [
 									"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200))",
@@ -555,7 +589,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"firstname\" : \"Sally\",\r\n\t\"lastname\" : \"Brown\",\r\n\t\"totalprice\" : 111,\r\n\t\"depositpaid\" : true,\r\n\t\"additionalneeds\" : \"Breakfast\",\r\n\t\"bookingdates\" : {\r\n\t\t\"checkin\" : \"2013-02-23\",\r\n\t\t\"checkout\" : \"2014-10-23\"\r\n\t}\r\n}"
+							"raw": "{\n  \"firstname\" : \"Sally\",\n\t\"lastname\" : \"Brown\",\n\t\"totalprice\" : 111,\n\t\"depositpaid\" : true,\n\t\"additionalneeds\" : \"Breakfast\",\n\t\"bookingdates\" : {\n\t\t\"checkin\" : \"2013-02-23\",\n\t\t\"checkout\" : \"2014-10-23\"\n\t}\n}"
 						},
 						"url": {
 							"raw": "{{baseURL}}/booking",
@@ -628,9 +662,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f4db6ba1-d350-4d89-a62b-97543a0886df",
+								"id": "ebb2be51-3874-4771-866e-9e76bee42c85",
 								"type": "text/javascript",
 								"exec": [
+									"// This is sending a request to the randomuser API to get some names ",
 									"pm.sendRequest(\"https://randomuser.me/api/\", (err, res) => {",
 									"    var firstname = res.json().results[0].name.first",
 									"    var lastname  = res.json().results[0].name.last",
@@ -638,15 +673,19 @@
 									"    pm.environment.set(\"last_name\", JSON.stringify((_.capitalize(lastname))))",
 									"})",
 									"",
+									"// This is setting a random number between 0 and a 1000 for the Total Price",
 									"pm.environment.set(\"total_price\", _.random(0, 1000))",
 									"",
+									"// This is selected either True or False for the Desposit Paid property",
 									"const depositPaid = [true, false]",
 									"pm.environment.set(\"depositPaid\", _.shuffle(depositPaid)[0])",
 									"",
+									"// This is using momentjs to created a Check In and Out date in a specific format",
 									"const moment = require('moment')",
 									"pm.environment.set(\"check_in\", JSON.stringify(moment().format('YYYY-MM-DD')))",
 									"pm.environment.set(\"check_out\", JSON.stringify(moment().add(_.random(1, 14), 'days').format('YYYY-MM-DD')))",
 									"",
+									"// This is selecting a random item from the list and adding this an an additional need",
 									"const items = [\"None\", \"Breakfast\", \"Lunch\", \"Dinner\", \"Late Checkout\", \"Newspaper\", \"Extra Pillow\"]",
 									"pm.environment.set(\"additional_needs\", JSON.stringify(_.shuffle(items)[0]))"
 								]
