@@ -8,11 +8,17 @@ The collection and environment files have been taken from the [All-Things-Postma
 
 In order to use TravisCI in you're own projects you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
 
+More information about the sign up and set up process for TravisCI can be found [here](https://docs.travis-ci.com/user/getting-started).
+
 ---
 
 ### How does it all work?
 
-All the magic happens in the `.travis.yml` file. This is building out the node environment and installing the required `Newman` module needed to run the collection file. Once the environment has been created, the `script` section is run - This would be run in the same way that you would run `Newman` from the command line on your local machine.
+All the magic happens in the `.travis.yml` file. This is building out the node environment and installing the required `Newman` module needed to run the collection file.
+
+Once the node environment has been created, the `script` section is run - This would be run in the same way that you would run `Newman` from the command line on your local machine.
+
+You can specifiy a number of different command line args to the script that would change the way that `Newman` runs the command. More details can be found [here](https://github.com/postmanlabs/newman#command-line-options). 
 
 ```yml
 language: node_js
@@ -43,3 +49,5 @@ Once the collection has run via TravisCI, you will see the log output of that bu
 ![Collection_Tests](/public/Collection_Tests.PNG)
 
 ---
+
+That's it - It's a very simple example of how you *could* use TravisCI to run a Postman collection. If you have any questions, you can drop me a message on Twitter `@dannydainton`.
