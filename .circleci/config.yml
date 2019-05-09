@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  newman: postman/newman@1.0.0
+  newman: postman/newman@0.0.1
 jobs:
   newman-collection-run:
     executor: newman/postman-newman-docker
