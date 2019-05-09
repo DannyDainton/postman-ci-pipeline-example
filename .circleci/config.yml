@@ -1,0 +1,11 @@
+version: 2.1
+orbs:
+  newman: postman/newman@1.0.0
+jobs:
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./tests/Restful_Booker_Collection.postman_collection.json
+          environment: ./tests/Restful_Booker_Environment.postman_environment.json
