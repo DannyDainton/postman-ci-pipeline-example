@@ -16,7 +16,7 @@ More information about the sign up and set up process for TravisCI can be found 
 
 ---
 
-### How does it all work?
+### How does it work with Travis?
 
 All the magic happens in the `.travis.yml` file. This is building out the node environment and installing the required `Newman` module needed to run the collection file.
 
@@ -55,7 +55,7 @@ Once the collection has run via TravisCI, you will see the log output of that bu
 
 ## CircleCI
 
-### How does it all work?
+### How does it work CircleCI?
 
 All the magic happens in the `.circleci/config.yml` file. This is using the `Newman` Docker image needed to run the collection file.
  
