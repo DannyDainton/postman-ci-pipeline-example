@@ -16,7 +16,7 @@ More information about the sign up and set up process for TravisCI can be found 
 
 ---
 
-### How does it work with Travis?
+### How does it work with Travis
 
 All the magic happens in the `.travis.yml` file. This is building out the node environment and installing the required `Newman` module needed to run the collection file.
 
@@ -59,7 +59,7 @@ In order to you CircleCI on your projects you will need an account. You can sign
 
 More information about getting started with CircleCI, can be found [here](https://circleci.com/docs/2.0/first-steps/#section=getting-started).
 
-### How does it work CircleCI?
+### How does it work CircleCI
 
 All the magic happens in the `.circleci/config.yml` file. This is using the `Postman` Orb to run the collection file.
 
