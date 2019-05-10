@@ -2,7 +2,7 @@
 
 ## Build badges
 
-Using [Shields.io]() we can get a visual indication about about build status and display this on our repo.
+Using [Shields.io](https://shields.io/) we can get a visual indication about about build status and display this on our repo.
 
 #### TravisCI
 
@@ -18,13 +18,17 @@ Using [Shields.io]() we can get a visual indication about about build status and
 
 --- 
 
-A very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems.
+This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems. 
 
-The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman).
+ - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
+- CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
+- Bitbuckct Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+
+The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
+
+---
 
 ## TravisCI
-
-[TravisCI](https://travis-ci.org/).
 
 In order to use TravisCI in you're own projects you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
 
@@ -88,9 +92,9 @@ The basic `config.yml` file will look like the example below. There several othe
 ```yml
 version: 2.1
 orbs:
-  newman: postman/newman@1.0.0
+  newman: postman/newman@0.0.1
 jobs:
-  newman-collection-run:
+  build:
     executor: newman/postman-newman-docker
     steps:
       - checkout
@@ -101,9 +105,9 @@ jobs:
 
 ## Bitbucket Pipelines
 
-### How does it work CircleCI
+### How does it work Bitbucket Pipelines
 
-All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `Newman` Docker image to run the collection file.
+All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `postman/newman_alpine33` Docker image, to run the collection file.
 
 ```yml
 image: postman/newman_alpine33
@@ -119,4 +123,6 @@ pipelines:
 
 ---
 
-That's it - It's a very simple example of how you *could* use some of the CI Systems out there to run Postman collections. If you have any questions, you can drop me a message on Twitter `@dannydainton`.
+That's it - It's a very simple example of how you *could* use some of the CI Systems out there to run Postman collections with Newman. 
+
+If you have any questions, you can drop me a message on Twitter `@dannydainton`.
