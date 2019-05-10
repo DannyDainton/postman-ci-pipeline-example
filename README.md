@@ -16,7 +16,7 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 
 [![Build Status](https://img.shields.io/bitbucket/pipelines/ddainton/postman-ci-pipeline-example.svg)](https://bitbucket.org/ddainton/postman-ci-pipeline-example)
 
-### GitLab
+#### GitLab
 
 [![Build Status](https://img.shields.io/gitlab/pipeline/DannyDainton/postman-ci-pipeline-example.svg)](https://gitlab.com/DannyDainton/postman-ci-pipeline-example)
 
@@ -24,7 +24,7 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 
 This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
 
- - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
+- TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
 - CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
 - Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
 
@@ -37,7 +37,6 @@ The collection and environment files have been taken from the [All-Things-Postma
 In order to use TravisCI in you're own projects you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
 
 More information about the sign up and set up process for TravisCI can be found [here](https://docs.travis-ci.com/user/getting-started).
-
 
 ### How does it work with TravisCI
 
@@ -150,6 +149,10 @@ newman_tests:
         - newman --version
         - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json
 ```
+
+#### An example of the summary run output...
+
+![GitLab](/public/GitLab.PNG)
 
 ---
 
