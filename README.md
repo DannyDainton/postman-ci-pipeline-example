@@ -1,6 +1,6 @@
 # postman-ci-pipeline-example
 
-[![Build Status](https://travis-ci.org/DannyDainton/postman-travisci-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-travisci-example)
+[![Build Status](https://travis-ci.org/DannyDainton/postman-travis-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-travis-ci-pipeline-example)
 
 A very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems.
 
@@ -55,9 +55,19 @@ Once the collection has run via TravisCI, you will see the log output of that bu
 
 ## CircleCI
 
+In order to you CircleCI on your projects you will need an account. You can sign in via Github, which makes it easier to add your projects from your repos.
+
+More information about getting started with CircleCI, can be found [here](https://circleci.com/docs/2.0/first-steps/#section=getting-started).
+
 ### How does it work CircleCI?
 
-All the magic happens in the `.circleci/config.yml` file. This is using the `Newman` Docker image needed to run the collection file.
+All the magic happens in the `.circleci/config.yml` file. This is using the `Postman` Orb to run the collection file.
+
+> Orbs are packages of config that you can use to quickly get started with the CircleCI platform. Orbs enable you to share, 
+> standardize, and simplify config across your projects. You may also want to use orbs as a refererence for config best 
+> practices. Refer to the CircleCI Orbs Registry for the complete list of available orbs.
+
+The basic `config.yml` file will look like the example below. There several other Newman specific options available, just like when running `Newman` from the CLI. More information about the options can be found [here](https://circleci.com/orbs/registry/orb/postman/newman). 
  
 ```yml
 version: 2.1
