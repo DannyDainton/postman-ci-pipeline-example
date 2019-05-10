@@ -12,6 +12,12 @@ Using [Shields.io]() we can get a visual indication about about build status and
 
 [![Build Status](https://img.shields.io/circleci/project/github/DannyDainton/postman-ci-pipeline-example.svg)](https://circleci.com/gh/DannyDainton/postman-ci-pipeline-example)
 
+#### Bitbucket Pipelines
+
+[![Build Status](https://img.shields.io/bitbucket/pipelines/ddainton/postman-ci-pipeline-example.svg)](https://bitbucket.org/ddainton/postman-ci-pipeline-example)
+
+--- 
+
 A very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems.
 
 The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman).
@@ -74,11 +80,11 @@ More information about getting started with CircleCI, can be found [here](https:
 All the magic happens in the `.circleci/config.yml` file. This is using the `Postman` Orb to run the collection file.
 
 > Orbs are packages of config that you can use to quickly get started with the CircleCI platform. Orbs enable you to share, 
-> standardize, and simplify config across your projects. You may also want to use orbs as a refererence for config best 
+> standardize, and simplify config across your projects. You may also want to use orbs as a reference for config best 
 > practices. Refer to the CircleCI Orbs Registry for the complete list of available orbs.
 
-The basic `config.yml` file will look like the example below. There several other Newman specific options available, just like when running `Newman` from the CLI. More information about the options can be found [here](https://circleci.com/orbs/registry/orb/postman/newman). 
- 
+The basic `config.yml` file will look like the example below. There several other Newman specific options available, just like when running `Newman` from the CLI. More information about the options can be found [here](https://circleci.com/orbs/registry/orb/postman/newman).
+
 ```yml
 version: 2.1
 orbs:
@@ -92,6 +98,24 @@ jobs:
           collection: ./tests/Restful_Booker_Collection.postman_collection.json
           environment: ./tests/Restful_Booker_Environment.postman_environment.json
 ```
+
+## Bitbucket Pipelines
+
+### How does it work CircleCI
+
+All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `Newman` Docker image to run the collection file.
+
+```yml
+image: postman/newman_alpine33
+
+pipelines:
+  default:
+    - step:
+        script:
+        - newman --version
+        - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json
+```
+
 
 ---
 
