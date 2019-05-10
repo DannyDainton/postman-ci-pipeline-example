@@ -1,6 +1,16 @@
 # postman-ci-pipeline-example
 
-[![Build Status](https://travis-ci.org/DannyDainton/postman-travis-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-travis-ci-pipeline-example)
+## Build badges
+
+Using [Shields.io]() we can get a visual indication about about build status and display this on our repo.
+
+#### TravisCI
+
+[![Build Status](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example)
+
+#### CircleCI
+
+[![Build Status](https://img.shields.io/circleci/project/github/DannyDainton/postman-ci-pipeline-example.svg)](https://circleci.com/gh/DannyDainton/postman-ci-pipeline-example)
 
 A very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems.
 
