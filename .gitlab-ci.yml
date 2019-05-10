@@ -1,0 +1,11 @@
+stages:
+    - test
+
+newman_tests:
+    stage: test
+    image:
+        name: postman/newman_alpine33
+        entrypoint: [""]
+    script:
+        - newman --version
+        - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json

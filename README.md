@@ -16,13 +16,17 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 
 [![Build Status](https://img.shields.io/bitbucket/pipelines/ddainton/postman-ci-pipeline-example.svg)](https://bitbucket.org/ddainton/postman-ci-pipeline-example)
 
---- 
+### GitLab
+
+[![Build Status](https://img.shields.io/gitlab/pipeline/DannyDainton/postman-ci-pipeline-example.svg)](https://gitlab.com/DannyDainton/postman-ci-pipeline-example)
+
+---
 
 This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
 
  - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
 - CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
-- Bitbuckct Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+- Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
 
 The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
 
@@ -35,7 +39,7 @@ In order to use TravisCI in you're own projects you will need to signup and then
 More information about the sign up and set up process for TravisCI can be found [here](https://docs.travis-ci.com/user/getting-started).
 
 
-### How does it work with Travis
+### How does it work with TravisCI
 
 All the magic happens in the `.travis.yml` file. This is building out the node environment and installing the required `Newman` module needed to run the collection file.
 
@@ -74,7 +78,7 @@ In order to you CircleCI on your projects you will need an account. You can sign
 
 More information about getting started with CircleCI, can be found [here](https://circleci.com/docs/2.0/first-steps/#section=getting-started).
 
-### How does it work CircleCI
+### How does it work with CircleCI
 
 All the magic happens in the `.circleci/config.yml` file. This is using the `Postman` Orb to run the collection file.
 
@@ -106,7 +110,7 @@ jobs:
 
 ## Bitbucket Pipelines
 
-### How does it work Bitbucket Pipelines
+### How does it work with Bitbucket Pipelines
 
 All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `postman/newman_alpine33` Docker image, to run the collection file.
 
@@ -124,6 +128,28 @@ pipelines:
 #### An example of the summary run output...
 
 ![Bitbucket Pipeline](/public/Bitbucket_Pipeline.PNG)
+
+---
+
+## GitLab
+
+### How does it work with GitLab
+
+All the magic happens in the `.gitlab-ci.yml` file. This is using the `postman/newman_alpine33` Docker image, to run the collection file.
+
+```yml
+stages:
+    - test
+
+newman_tests:
+    stage: test
+    image:
+        name: postman/newman_alpine33
+        entrypoint: [""]
+    script:
+        - newman --version
+        - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json
+```
 
 ---
 
