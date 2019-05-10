@@ -18,7 +18,7 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 
 --- 
 
-This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems. 
+This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
 
  - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
 - CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
@@ -34,7 +34,6 @@ In order to use TravisCI in you're own projects you will need to signup and then
 
 More information about the sign up and set up process for TravisCI can be found [here](https://docs.travis-ci.com/user/getting-started).
 
----
 
 ### How does it work with Travis
 
@@ -61,15 +60,11 @@ script:
   - node_modules/.bin/newman run tests/Restful_Booker_Collection.postman_collection.json -e tests/Restful_Booker_Environment.postman_environment.json --color auto --disable-unicode
 ```
 
----
-
 Once the collection has run via TravisCI, you will see the log output of that build in the Travis UI. Any `Tests` that are in the collection, will run and the results will be displayed in the log output.
 
-#### An example of what that might look like...
+#### An example of the summary run output...
 
-![Travis_Environment_Setup](/public/Travis_Environment_Setup.PNG)
-
-![Collection_Tests](/public/Collection_Tests.PNG)
+![TravisCI](/public/TravisCI.PNG)
 
 ---
 
@@ -103,6 +98,12 @@ jobs:
           environment: ./tests/Restful_Booker_Environment.postman_environment.json
 ```
 
+#### An example of the summary run output...
+
+![CircleCI](/public/CircleCI.PNG)
+
+---
+
 ## Bitbucket Pipelines
 
 ### How does it work Bitbucket Pipelines
@@ -120,9 +121,12 @@ pipelines:
         - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json
 ```
 
+#### An example of the summary run output...
+
+![Bitbucket Pipeline](/public/Bitbucket_Pipeline.PNG)
 
 ---
 
-That's it - It's a very simple example of how you *could* use some of the CI Systems out there to run Postman collections with Newman. 
+That's it - It's a very simple example of how you *could* use some of the CI Systems out there to run Postman collections with Newman.
 
 If you have any questions, you can drop me a message on Twitter `@dannydainton`.
