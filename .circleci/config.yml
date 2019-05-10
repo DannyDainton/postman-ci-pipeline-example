@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   newman: postman/newman@0.0.1
 jobs:
-  newman-collection-run:
+  build:
     executor: newman/postman-newman-docker
     steps:
       - checkout
