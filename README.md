@@ -1,5 +1,14 @@
 # postman-ci-pipeline-example
 
+This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
+
+- TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
+- CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
+- Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+- GitLab is using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+
+The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
+
 ## Build badges
 
 Using [Shields.io](https://shields.io/) we can get a visual indication about about build status and display this on our repo.
@@ -19,16 +28,6 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 #### GitLab
 
 [![Build Status](https://img.shields.io/gitlab/pipeline/DannyDainton/postman-ci-pipeline-example.svg)](https://gitlab.com/DannyDainton/postman-ci-pipeline-example)
-
----
-
-This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
-
-- TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
-- CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
-- Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
-
-The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
 
 ---
 
@@ -106,6 +105,9 @@ jobs:
 ![CircleCI](/public/CircleCI.PNG)
 
 ---
+
+
+There a couple of other CI systems that I wanted to demo - These unlike TravisCI and CircleCI, hold the code in their own repos and not within Github. They both work in a simialir ways and use a `.yml` for the build config but the output can be seen in the application UI, rather than moving away to view this in a 3rd dashboard.
 
 ## Bitbucket Pipelines
 
