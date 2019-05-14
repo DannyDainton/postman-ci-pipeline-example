@@ -130,6 +130,8 @@ pipelines:
 
 ![Bitbucket Pipeline](/public/Bitbucket_Pipeline.PNG)
 
+A sample Bitbucket Pipeline project can be found here: https://bitbucket.org/ddainton/postman-ci-pipeline-example/src/master/
+
 ---
 
 ## GitLab
