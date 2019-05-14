@@ -156,6 +156,8 @@ newman_tests:
 
 ![GitLab](/public/GitLab.PNG)
 
+A sample Gitlab project can be found here: https://gitlab.com/DannyDainton/postman-ci-pipeline-example
+
 ---
 
 That's it - It's a very simple example of how you *could* use some of the CI Systems out there to run Postman collections with Newman.
