@@ -11,27 +11,13 @@ The collection and environment files have been taken from the [All-Things-Postma
 
 ## Build badges
 
-Using [Shields.io](https://shields.io/) we can get a visual indication about about build status and display this on our repo.
-
-#### TravisCI
-
-[![Build Status](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example)
-
-#### CircleCI
-
-[![Build Status](https://img.shields.io/circleci/project/github/DannyDainton/postman-ci-pipeline-example.svg)](https://circleci.com/gh/DannyDainton/postman-ci-pipeline-example)
-
-#### Bitbucket Pipelines
-
-[![Build Status](https://img.shields.io/bitbucket/pipelines/ddainton/postman-ci-pipeline-example.svg)](https://bitbucket.org/ddainton/postman-ci-pipeline-example)
-
-#### GitLab
-
-[![Build Status](https://img.shields.io/gitlab/pipeline/DannyDainton/postman-ci-pipeline-example.svg)](https://gitlab.com/DannyDainton/postman-ci-pipeline-example)
+Using [Shields.io](https://shields.io/) we can get a visual indication about about build status and display this on our repo. I've included the ones for Travis and CircleCI here as these run when a commit is made against this repo. I've added the ones for BitBucket and Gitlab to the sample projects on those repos.
 
 ---
 
 ## TravisCI
+
+[![Build Status](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example)
 
 In order to use TravisCI in you're own projects you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
 
@@ -71,6 +57,8 @@ Once the collection has run via TravisCI, you will see the log output of that bu
 ---
 
 ## CircleCI
+
+[![Build Status](https://img.shields.io/circleci/project/github/DannyDainton/postman-ci-pipeline-example.svg)](https://circleci.com/gh/DannyDainton/postman-ci-pipeline-example)
 
 In order to you CircleCI on your projects you will need an account. You can sign in via Github, which makes it easier to add your projects from your repos.
 
