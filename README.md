@@ -19,7 +19,7 @@ Using [Shields.io](https://shields.io/) we can get a visual indication about abo
 
 [![Build Status](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example.svg?branch=master)](https://travis-ci.org/DannyDainton/postman-ci-pipeline-example)
 
-In order to use TravisCI in you're own projects you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
+In order to use TravisCI in your own projects, you will need to signup and then sync it to your Github account. On the free TravisCI tier, you will only be able to run your Public repos through TravisCI.
 
 More information about the sign up and set up process for TravisCI can be found [here](https://docs.travis-ci.com/user/getting-started).
 
@@ -60,7 +60,7 @@ Once the collection has run via TravisCI, you will see the log output of that bu
 
 [![Build Status](https://img.shields.io/circleci/project/github/DannyDainton/postman-ci-pipeline-example.svg)](https://circleci.com/gh/DannyDainton/postman-ci-pipeline-example)
 
-In order to you CircleCI on your projects you will need an account. You can sign in via Github, which makes it easier to add your projects from your repos.
+In order to use CircleCI on your projects you will need an account. You can sign in via Github, which makes it easier to add your projects from your repos.
 
 More information about getting started with CircleCI, can be found [here](https://circleci.com/docs/2.0/first-steps/#section=getting-started).
 
@@ -96,6 +96,11 @@ jobs:
 
 
 There a couple of other CI systems that I wanted to demo - These unlike TravisCI and CircleCI, hold the code in their own repos and not within Github. They both work in a simialir ways and use a `.yml` for the build config but the output can be seen in the application UI, rather than moving away to view this in a 3rd dashboard.
+
+In order to use these CI systems you would need to create an account and sign in, before you're able to create your first projects.
+
+- [Bitbucket](https://bitbucket.org/account/signup/)
+- [GitLab](https://gitlab.com/users/sign_in#register-pane)
 
 ## Bitbucket Pipelines
 
@@ -139,7 +144,7 @@ newman_tests:
         entrypoint: [""]
     script:
         - newman --version
-        - newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json
+        - newman run ./Restful_Booker_Collection.postman_collection.json -e ./Restful_Booker_Environment.postman_environment.json
 ```
 
 #### An example of the summary run output...
