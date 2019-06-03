@@ -34,7 +34,7 @@ You can specify a number of different command line args to the script that would
 ```yml
 language: node_js
 node_js:
-  - "8.2.1"
+  - "10"
 
 install:
   - npm install newman
@@ -77,7 +77,7 @@ The basic `config.yml` file will look like the example below. There several othe
 ```yml
 version: 2.1
 orbs:
-  newman: postman/newman@0.0.1
+  newman: postman/newman@0.0.2
 jobs:
   build:
     executor: newman/postman-newman-docker
