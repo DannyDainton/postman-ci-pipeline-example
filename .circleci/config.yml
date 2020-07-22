@@ -1,27 +1,10 @@
-version: 2
-jobs:           
- newman-collection-run:
-    executor: postman/newman
+ version: 2.1
+jobs:
+  build:
+    docker:
+      - image: dannydainton/htmlextra
     steps:
-      - checkout
-      - newman/newman-run:
-          collection: ./tests/Restful_Booker_Collection.postman_collection.json
-          environment: ./tests/Restful_Booker_Environment.postman_environment.json
-          timeout: "300000"
-          additional-options: -r cli,htmlextra
-      - run:
-          name: Save test results
-          command: |
-            npm i -g newman-reporter-htmlextra
-            mkdir -p ~/test-results/newman
-            cp ./newman/*.html ~/test-results/newman/
-      - store_test_results:
-          path: ~/test-results
+      - run: |
+          docker run -t -v $(pwd):/etc/newman dannydainton/htmlextra run collection.json -r cli,htmlextra
       - store_artifacts:
           path: ~/test-results/newman
-          
-workflows:
-  version: 2
-  test:
-    jobs:
-      - newman-collection-run
