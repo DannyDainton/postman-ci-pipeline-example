@@ -5,4 +5,4 @@ jobs:
       - image: dannydainton/htmlextra
     steps:
       - checkout
-      - run: run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
+      - run: newman run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
