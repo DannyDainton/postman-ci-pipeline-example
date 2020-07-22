@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  run_test:
+  run_tests:
     docker: 
      - image: dannydainton/htmlextra
     steps:
