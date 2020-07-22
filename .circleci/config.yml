@@ -19,3 +19,10 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results/newman
+          
+          
+workflows:	
+    version: 2	
+    main:	
+        jobs:	
+            - newman-collection-run
