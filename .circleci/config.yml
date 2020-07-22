@@ -1,7 +1,7 @@
 version: 2
 jobs:           
  newman-collection-run:
-    executor: newman/postman-newman-docker
+    executor: postman/newman
     steps:
       - checkout
       - newman/newman-run:
