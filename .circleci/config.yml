@@ -1,22 +1,21 @@
-version: 2.1
-orbs:
-  newman: postman/newman@0.0.2
-jobs:
-  newman-collection-run:
+newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
           collection: https://www.getpostman.com/collections/83fe94d56b18938765bd
-          timeout: "300000"
-          additional-options: -r cli,htmlextra
+          additional-options: -r cli,junit
       - run:
           name: Save test results
           command: |
-            npm i -g newman-reporter-htmlextra
             mkdir -p ~/test-results/newman
-            cp ./newman/*.html ~/test-results/newman/
+            cp ./newman/newman-run-report-*.xml ~/test-results/newman/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results/newman
+workflows:
+  test:
+    jobs:
+      - test
+      - newman-collection-run
