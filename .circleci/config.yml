@@ -6,10 +6,5 @@ jobs:
     steps:
       - checkout
       - run: newman run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
-        command: |
-           mkdir -p ~/test-results/newman
-           cp ./newman/*.xml ~/test-results/newman/
-      - store_test_results:
-          path: ~/test-results
       - store_artifacts:
           path: ~/test-results/newman
