@@ -6,3 +6,8 @@ jobs:
     steps:
       - checkout
       - run: newman run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
+      - store_artifacts:
+          path: /etc/newman
+
+      - store_artifacts:
+          path: /newman
