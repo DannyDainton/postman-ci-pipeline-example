@@ -1,18 +1,8 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: dannydainton/htmlextra
-    steps:
-      - checkout
-      - run: newman run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
-      - store_artifacts:
-          path: etc/newman
-          
-          
-newman-collection-run:
     docker: 
-      - image: postman/newman
+      - image: dannydainton/htmlextra
     steps:
       - checkout
       - newman/newman-run:
@@ -22,7 +12,6 @@ newman-collection-run:
       - run:
           name: Save test results
           command: |
-            npm i -g newman-reporter-htmlextra
             mkdir -p ~/test-results/newman
             cp ./newman/*.html ~/test-results/newman/
       - store_test_results:
