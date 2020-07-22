@@ -4,7 +4,5 @@ jobs:
     docker:
       - image: dannydainton/htmlextra
     steps:
-      - run: |
-          docker run -t -v $(pwd):/etc/newman dannydainton/htmlextra run collection.json -r cli,htmlextra
-      - store_artifacts:
-          path: ~/test-results/newman
+      - checkout
+      - run: run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
