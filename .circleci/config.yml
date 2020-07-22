@@ -5,7 +5,7 @@ jobs:
      - image: dannydainton/htmlextra
     steps:
       - checkout
-      - run: -t -v $(pwd):/etc/newman run tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json -r htmlextra
+      - run: -v $(pwd):/etc/newman run tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json -r htmlextra
       - store_artifacts:
           path: ~/newman
 workflows:
