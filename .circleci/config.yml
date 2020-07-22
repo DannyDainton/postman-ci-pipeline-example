@@ -8,12 +8,13 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: https://www.getpostman.com/collections/83fe94d56b18938765bd
-          additional-options: -r cli,junit
+          additional-options: -r cli,htmlextra
       - run:
           name: Save test results
           command: |
+            npm i -g newman-reporter-htmlextra
             mkdir -p ~/test-results/newman
-            cp ./newman/newman-run-report-*.xml ~/test-results/newman/
+            cp ./newman/*.html ~/test-results/newman/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
