@@ -1,5 +1,5 @@
 version: 2
-jobs:            
+jobs:           
  newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
@@ -20,9 +20,8 @@ jobs:
       - store_artifacts:
           path: ~/test-results/newman
           
-          
-workflows:	
+workflows:
     version: 2	
-    main:	
-        jobs:	
+    main:
+        jobs:
             - newman-collection-run
