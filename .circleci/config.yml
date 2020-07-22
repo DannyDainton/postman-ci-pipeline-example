@@ -1,8 +1,9 @@
 version: 2.1
+orbs:
+  newman: postman/newman@0.0.2
 jobs:
-  build:
-    docker: 
-      - image: dannydainton/htmlextra
+  newman-collection-run:
+    executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
@@ -12,6 +13,7 @@ jobs:
       - run:
           name: Save test results
           command: |
+            npm i -g newman-reporter-htmlextra
             mkdir -p ~/test-results/newman
             cp ./newman/*.html ~/test-results/newman/
       - store_test_results:
