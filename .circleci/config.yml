@@ -21,6 +21,7 @@ jobs:
           path: ~/test-results/newman
           
 workflows:
+  version: 2
   test:
     jobs:
       - newman-collection-run
