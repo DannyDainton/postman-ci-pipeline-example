@@ -8,7 +8,7 @@ jobs:
       - run:
          command: |
            mkdir -p ~/test-results/newman
-           newman run https://www.getpostman.com/collections/83fe94d56b18938765bd -r cli,htmlextra
+           newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json -r cli,htmlextra
            cp ./newman/*.html ~/test-results/newman/
       - store_artifacts:
           path: ~/test-results/newman
