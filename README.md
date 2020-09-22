@@ -1,11 +1,12 @@
 # postman-ci-pipeline-example
 
-This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems.
+This is very simple project to demonstrate using [Newman](https://github.com/postmanlabs/newman) to run a Postman collections through some of the different CI systems. There are a number of different ways that you can use `Newman` in these CI systems. 
 
 - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
 - CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
 - Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
 - GitLab is using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+- *new* Azure is installing the 'Newman' NPM package, then running the collection in Azure DevOps as a Task run via an Agent.  
 
 The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
 
@@ -152,6 +153,26 @@ newman_tests:
 ![GitLab](/public/GitLab.PNG)
 
 A sample Gitlab project can be found here: https://gitlab.com/DannyDainton/postman-ci-pipeline-example
+
+---
+
+## Microsoft Azure DevOps (Added by Beth Marshall @askherconsulting)
+
+### How does it work with Azure DevOps
+
+All the magic happens in the pipeline task group, which you can configure to contain several tasks in order to setup, run and report.
+
+See attached screenshots for specific setup:-
+![Azure](/public/AzureTaskGroup.PNG), ![Azure](/public/AzureTask1InstallNewman.PNG), ![Azure](/public/AzureTask2RunTests.PNG), ![Azure](/public/AzureTask3ReportOptional.PNG)
+
+```newman run "https://api.getpostman.com/collections/<<Postman API Collection URL>>" \
+    -e "<<Postman API Environment URL>>" -r cli,junitfull --reporter-junitfull-export JUnitReport.xml
+```
+
+#### An example of the summary run output...
+
+![Azure](/public/AzureTestSummary.PNG)
+
 
 ---
 
