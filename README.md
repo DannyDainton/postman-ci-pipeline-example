@@ -34,7 +34,7 @@ You can specify a number of different command line args to the script that would
 ```yml
 language: node_js
 node_js:
-  - "10"
+  - "14"
 
 install:
   - npm install newman
@@ -106,10 +106,10 @@ In order to use these CI systems you would need to create an account and sign in
 
 ### How does it work with Bitbucket Pipelines
 
-All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `postman/newman_alpine33` Docker image, to run the collection file.
+All the magic happens in the `bitbucket.pipelines.yml` file. This is using the `postman/newman` Docker image, to run the collection file.
 
 ```yml
-image: postman/newman_alpine33
+image: postman/newman
 
 pipelines:
   default:
@@ -131,7 +131,7 @@ A sample Bitbucket Pipeline project can be found here: https://bitbucket.org/dda
 
 ### How does it work with GitLab
 
-All the magic happens in the `.gitlab-ci.yml` file. This is using the `postman/newman_alpine33` Docker image, to run the collection file.
+All the magic happens in the `.gitlab-ci.yml` file. This is using the `postman/newman` Docker image, to run the collection file.
 
 ```yml
 stages:
@@ -140,7 +140,7 @@ stages:
 newman_tests:
     stage: test
     image:
-        name: postman/newman_alpine33
+        name: postman/newman
         entrypoint: [""]
     script:
         - newman --version
