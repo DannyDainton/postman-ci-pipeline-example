@@ -4,7 +4,7 @@ stages:
 newman_tests:
     stage: test
     image:
-        name: postman/newman_alpine33
+        name: postman/newman
         entrypoint: [""]
     script:
         - newman --version
