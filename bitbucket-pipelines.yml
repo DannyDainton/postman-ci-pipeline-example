@@ -1,4 +1,4 @@
-image: postman/newman_alpine33
+image: postman/newman
 
 pipelines:
   default:
