@@ -4,8 +4,8 @@ This is very simple project to demonstrate using [Newman](https://github.com/pos
 
 - TravisCI is creating a node environment and installing the `Newman` NPM package, then running the Collection via a CLI script.
 - CircleCI is using the `postman/newman` orb, from there orb [registry](https://circleci.com/orbs/registry/). This a packaged version of the Newman Docker image held on their internal registry.
-- Bitbucket Pipelines is creating an environment and using the `postman/newman_alpine33` Docker image and running the collection file in a container.
-- GitLab is using the `postman/newman_alpine33` Docker image and running the collection file in a container.
+- Bitbucket Pipelines is creating an environment and using the `postman/newman` Docker image and running the collection file in a container.
+- GitLab is using the `postman/newman` Docker image and running the collection file in a container.
 
 The collection and environment files have been taken from the [All-Things-Postman Repo](https://github.com/DannyDainton/All-Things-Postman). Each of the different systems will output the same CLI summary to the console.
 
