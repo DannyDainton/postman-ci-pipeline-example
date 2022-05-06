@@ -1,14 +1,11 @@
 version: 2.1
+orbs:
+  newman: postman/newman@1.0.0
 jobs:
   build:
-    docker:
-      - image: dannydainton/htmlextra
+    executor: newman/postman-newman-docker
     steps:
       - checkout
-      - run:
-         command: |
-           mkdir -p ~/test-results/newman
-           newman run ./tests/Restful_Booker_Collection.postman_collection.json -e ./tests/Restful_Booker_Environment.postman_environment.json -r cli,htmlextra --reporter-htmlextra-title "Restful Booker"
-           cp ./newman/*.html ~/test-results/newman/
-      - store_artifacts:
-          path: ~/test-results/newman
+      - newman/newman-run:
+          collection: ./tests/Restful_Booker_Collection.postman_collection.json
+          environment: ./tests/Restful_Booker_Environment.postman_environment.json
